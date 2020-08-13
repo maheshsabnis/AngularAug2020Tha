@@ -12,4 +12,23 @@ export class CustomValidator {
         return {even : false}; // invalid
      }
   }
+
+  static CheckNegative(control: AbstractControl): any {
+      const value = control.value;
+      if (value > 0) {
+        return null; // valid
+      } else {
+        return {negative: true}; // invalid
+      }
+  }
+
+  static CheckBlankspace(control: AbstractControl): any {
+    const value = control.value;
+    if (!value.trim()) {
+      
+      return {blankspace: true}; // invalid
+    } else {
+      return null; // valid
+    }
+  }
 }

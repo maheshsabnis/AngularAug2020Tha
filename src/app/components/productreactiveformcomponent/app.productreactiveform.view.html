@@ -19,31 +19,53 @@
                         <div class="form-group">
                             <label>Product Id</label>
                             <input type="text" class="form-control" formControlName="ProductId" name="ProductId">
+                            <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductId.dirty && !frmProduct.controls.ProductId.valid">
+                                <p *ngIf="frmProduct.controls.ProductId.errors.required">Product Id is required</p>
+                                <p *ngIf="frmProduct.controls.ProductId.errors.blankspace">Sorry, no blank space</p>
+                                <p *ngIf="frmProduct.controls.ProductId.errors.pattern">Sorry, no special character</p>                             
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Product Name</label>
                             <input type="text" class="form-control" formControlName="ProductName" name="ProductName">
+                            <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductName.dirty && !frmProduct.controls.ProductName.valid">
+                                <p *ngIf="frmProduct.controls.ProductName.errors.required">Product Name is required</p>                                
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Category Name</label>
                             <select class="form-control" name="CategoryName" formControlName="CategoryName">
-                <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
-              </select>
+                                <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
+                            </select>
+                            <div class="alert alert-danger" *ngIf="frmProduct.controls.CategoryName.dirty && !frmProduct.controls.CategoryName.valid">
+                                <p *ngIf="frmProduct.controls.CategoryName.errors.required">Category Name is required</p>                                
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Manufacturer</label>
                             <select class="form-control" name="Manufacturer" formControlName="Manufacturer">
-                <option *ngFor="let m of manufacturers" value="{{m}}">{{m}}</option>
-              </select>
+                                <option *ngFor="let m of manufacturers" value="{{m}}">{{m}}</option>
+                            </select>
+                            <div class="alert alert-danger" *ngIf="frmProduct.controls.Manufacturer.dirty && !frmProduct.controls.Manufacturer.valid">
+                                <p *ngIf="frmProduct.controls.Manufacturer.errors.required">Manufacturer is required</p>                                
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Description</label>
                         <input type="text" class="form-control" formControlName="Description" name="Description">
+                        <div class="alert alert-danger" *ngIf="frmProduct.controls.Description.dirty && !frmProduct.controls.Description.valid">
+                            <p *ngIf="frmProduct.controls.Description.errors.required">Description is required</p>
+                            <p *ngIf="frmProduct.controls.Description.errors.maxlength">That's too long, 50 characters max please</p>                               
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Base Price</label>
                         <input type="text" class="form-control" formControlName="BasePrice" name="BasePrice">
+                        <div class="alert alert-danger" *ngIf="frmProduct.controls.BasePrice.dirty && !frmProduct.controls.BasePrice.valid">
+                            <p *ngIf="frmProduct.controls.BasePrice.errors.required">Base Price is required</p>
+                            <p *ngIf="frmProduct.controls.BasePrice.errors.negative">Sorry, must be positive numbers</p>                              
+                        </div>
                     </div>
                     <div class="form-group">
                         <input type="button" value="Clear" (click)="clear()" class="btn btn-warning">
